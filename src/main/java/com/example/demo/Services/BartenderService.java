@@ -19,7 +19,6 @@ public class BartenderService {
     BartenderRepository bartenderRespository;
 
     public ArrayList<BartenderModel> datosDB(){
-        System.out.println((ArrayList<BartenderModel>)bartenderRespository.findAll());
         return (ArrayList<BartenderModel>)bartenderRespository.findAll();
     }
 
@@ -28,9 +27,7 @@ public class BartenderService {
     }
     
     public ArrayList<Integer> respuesta(ParamsRequest input){
-        System.out.println("Recibe request: " + input.getIteration());
         ArrayList<Integer> P = getPrimes(input.getIteration());
-        System.out.println("Devuelve primos: " + P);
         int value;
         Optional<BartenderModel> data = obtenerDatos(input.getId());
         String stringData = data.get().getInput_array();
@@ -63,12 +60,8 @@ public class BartenderService {
         int number = 1;
         ArrayList<Integer> primes = new ArrayList<>();
         while (primesCounter <= iteration) {
-            System.out.println("Cantidad primos: " + primesCounter + " iteración " + iteration);
             int dividers = 0;
             for (int i = 1; i <= number ; i++) {
-                System.out.println("numero : " + number);
-                System.out.println("i : " + i);
-                System.out.println("modulo : " + number % i);
                 if (number % i == 0) {
                     dividers++;
                 }
